@@ -17,6 +17,14 @@ export default function SignUp() {
 
     }
   };
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setError("");
+    } catch (error) {
+      setError("Invalid email or password!");
+    }
+  };
     return (
         <SafeAreaView style={styles.container}>
         <TextInput
@@ -31,11 +39,13 @@ export default function SignUp() {
            style={styles.input}
            placeholder="Password"
            keyboardType="default"
-           secureTextEntry={true}  // Hide password
-           value={password}  // Bind to state
-           onChangeText={setPassword}  // Update state
+           secureTextEntry={true}  
+           value={password}  
+           onChangeText={setPassword}
         />
-      <Button color="dodgerblue" title="Sign Up" onPress={handleSignUp}/>
+        {error ? <Text style={{ color: "red" }}>{error}</Text> : null}  
+        <Button title="Sign In" onPress={handleLogin} color="dodgerblue"/>
+        <Button color="dodgerblue" title="Sign Up" onPress={handleSignUp}/>
     </SafeAreaView>
 
     );
