@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Text, StyleSheet, SafeAreaView } from "react-native";
 import { auth } from "../config/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword} from "firebase/auth";
 
 export default function SignUp() {
     const [email, setEmail] = useState<string>("");
@@ -17,14 +17,7 @@ export default function SignUp() {
 
     }
   };
-  const handleLogin = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      setError("");
-    } catch (error) {
-      setError("Invalid email or password!");
-    }
-  };
+  
     return (
         <SafeAreaView style={styles.container}>
         <TextInput
@@ -44,7 +37,7 @@ export default function SignUp() {
            onChangeText={setPassword}
         />
         {error ? <Text style={{ color: "red" }}>{error}</Text> : null}  
-        <Button title="Sign In" onPress={handleLogin} color="dodgerblue"/>
+        
         <Button color="dodgerblue" title="Sign Up" onPress={handleSignUp}/>
     </SafeAreaView>
 
