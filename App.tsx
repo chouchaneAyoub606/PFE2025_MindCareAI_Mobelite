@@ -1,14 +1,16 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
+import Navigation from "./src/screens/navigation";
+import { SafeAreaView } from "react-native";
 
-import Navigation from './screens/navigation';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import SplashScreen from './screens/SplashScreen';
 
-export default function App() { 
+
+export default function App() {
   return (
-    <NavigationContainer>
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
         <Navigation />
-    </NavigationContainer>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }

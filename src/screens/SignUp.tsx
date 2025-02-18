@@ -3,7 +3,7 @@ import { View, TextInput, Button, Text, StyleSheet, SafeAreaView } from "react-n
 import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword} from "firebase/auth";
 
-export default function SignUp() {
+export  function SignUp() {
     const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
@@ -46,6 +46,7 @@ export default function SignUp() {
   
   const styles = StyleSheet.create({
     container: {
+      flex:1,
       padding: 20,
     },
     label: {

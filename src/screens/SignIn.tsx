@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {View, TextInput, Text, TouchableOpacity} from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import styles from "../styles";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
+import styles from "../util/styles";
 
-const SignIn: React.FC = () => {
+export const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -22,10 +22,10 @@ const SignIn: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <LinearGradient
+      {/* <LinearGradient
       colors={["#A1CFF0", "#C3B1E1"]} // Blue --> lavander
       style={styles.gradient}
-      />
+      /> */}
       <View style={styles.card}>
         <Text style={styles.title}>Welcome To MindCare AI!</Text>
         <TextInput
@@ -60,4 +60,3 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
