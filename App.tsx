@@ -1,12 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import React from "react";
-import SignUp from './screens/SignUp';
+import { NavigationContainer } from '@react-navigation/native';
+
+import Navigation from './screens/navigation';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from './screens/SplashScreen';
 
-export default function App() {
+export default function App() { 
   return (
-      <SignUp />
+    <NavigationContainer>
+        <Navigation />
+    </NavigationContainer>
   );
 }
