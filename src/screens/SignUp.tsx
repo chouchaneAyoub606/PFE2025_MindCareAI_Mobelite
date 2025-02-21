@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Text, StyleSheet, SafeAreaView } from "react-native";
+import {View, TextInput, Text, TouchableOpacity, ImageBackground} from "react-native";
+import { signInWithEmailAndPassword,createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { createUserWithEmailAndPassword} from "firebase/auth";
+import styles from "../util/styles";
 
-export  function SignUp() {
-    const [email, setEmail] = useState<string>("");
+export const SignUp: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>("");
+  const [isPressed, setIsPressed] = useState(false);
 
   const handleSignUp = async () => {
     try {
@@ -17,49 +19,45 @@ export  function SignUp() {
 
     }
   };
-  
-    return (
-        <SafeAreaView style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder="your email"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          value={email} 
-          onChangeText={setEmail} 
-        />
-         <TextInput
-           style={styles.input}
-           placeholder="Password"
-           keyboardType="default"
-           secureTextEntry={true}  
-           value={password}  
-           onChangeText={setPassword}
-        />
-        {error ? <Text style={{ color: "red" }}>{error}</Text> : null}  
-        
-        <Button color="dodgerblue" title="Sign Up" onPress={handleSignUp}/>
-    </SafeAreaView>
 
-    );
-  };
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex:1,
-      padding: 20,
-    },
-    label: {
-      fontSize: 16,
-      marginBottom: 5,
-    },
-    input: {
-      width: 150,
-      height: 40,
-      borderWidth: 1,
-      borderColor: "gray",
-      borderRadius: 8,
-      paddingHorizontal: 10,
-      marginBottom: 10,
-    },
-  });
+  return (
+    <View style={styles.container}>
+     <ImageBackground 
+        source={require('../assets/background.png')} 
+        style={styles.background}
+        resizeMode="cover"
+      >
+      <View style={styles.card}>
+        <Text style={styles.title}>Welcome To MindCare AI!</Text>
+        <TextInput
+        style={styles.input}
+        placeholder="Email"
+        keyboardType="email-address"
+        value={email}
+        onChangeText={setEmail}
+        autoCapitalize="none"
+        />
+        <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+        />
+      
+        {error ? <Text style={styles.error}>{error}</Text> : null}
+
+        <TouchableOpacity 
+          activeOpacity={0.8}
+          onPress={handleSignUp}
+          onPressIn={() => setIsPressed(true)}
+          onPressOut={() => setIsPressed(false)}
+          style={[styles.button, isPressed && styles.buttonPressed, isPressed && { transform: [{ scale: 0.98 }] } ]}>
+          
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>  
+      </View> 
+      </ImageBackground>
+    </View>
+  );
+};
