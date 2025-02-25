@@ -1,65 +1,76 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Text, StyleSheet, SafeAreaView } from "react-native";
+import {View, TextInput, Text, TouchableOpacity, ImageBackground} from "react-native";
+import {createUserWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../config/firebase";
-import { createUserWithEmailAndPassword} from "firebase/auth";
+import styles from "../util/styles";
+import strings from "../util/Strings";
+import images from "../util/Images";
 
-export  function SignUp() {
-    const [email, setEmail] = useState<string>("");
+export const SignUp: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>("");
+  const [isPressed, setIsPressed] = useState(false);
 
   const handleSignUp = async () => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert("Account created successfully!");
-    } catch (err: any) {
-      alert(err.message);
+    if (!email) {
+      setError(strings.auth.errorRequiredEmail);
+      return;
+    }
 
+    else if (!password) {
+      setError(strings.auth.errorRequiredPassword);
+      return;
+    }
+    else {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert(strings.auth.successSignUp);
+      } catch (err: any) {
+        alert(err.message);
+  
+      }
     }
   };
-  
-    return (
-        <SafeAreaView style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder="your email"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          value={email} 
-          onChangeText={setEmail} 
-        />
-         <TextInput
-           style={styles.input}
-           placeholder="Password"
-           keyboardType="default"
-           secureTextEntry={true}  
-           value={password}  
-           onChangeText={setPassword}
-        />
-        {error ? <Text style={{ color: "red" }}>{error}</Text> : null}  
-        
-        <Button color="dodgerblue" title="Sign Up" onPress={handleSignUp}/>
-    </SafeAreaView>
 
-    );
-  };
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex:1,
-      padding: 20,
-    },
-    label: {
-      fontSize: 16,
-      marginBottom: 5,
-    },
-    input: {
-      width: 150,
-      height: 40,
-      borderWidth: 1,
-      borderColor: "gray",
-      borderRadius: 8,
-      paddingHorizontal: 10,
-      marginBottom: 10,
-    },
-  });
+  return (
+    <View style={styles.container}>
+     <ImageBackground 
+        source={images.ImageBackground} 
+        style={styles.background}
+        resizeMode="cover"
+      >
+      <View style={styles.card}>
+        <Text style={styles.title}>{strings.auth.welcome}</Text>
+        <TextInput
+        style={styles.input}
+        placeholder={strings.auth.emailPlaceholder}
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+        />
+        <TextInput
+        style={styles.input}
+        placeholder={strings.auth.passwordPlaceholder}
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+        />
+      
+        {error ? <Text style={styles.error}>{error}</Text> : null}
+
+        <TouchableOpacity 
+          activeOpacity={0.8}
+          onPress={handleSignUp}
+          onPressIn={() => setIsPressed(true)}
+          onPressOut={() => setIsPressed(false)}
+          style={[styles.button, isPressed && styles.buttonPressed, isPressed && { transform: [{ scale: 0.98 }] } ]}>
+          
+          <Text style={styles.buttonText}>{strings.auth.signUpTitle}</Text>
+        </TouchableOpacity>  
+      </View> 
+      </ImageBackground>
+    </View>
+  );
+};
