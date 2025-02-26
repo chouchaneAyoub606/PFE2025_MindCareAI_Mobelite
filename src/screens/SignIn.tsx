@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import {View, TextInput, Text, TouchableOpacity, ImageBackground} from "react-native";
+import { View, TextInput, Text, TouchableOpacity, ImageBackground } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import ForgotPassword from "./forgotPassword"
 import styles from "../util/styles";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "./navigation";
+
+type SignInProps = NativeStackScreenProps<RootStackParamList, "SignIn">;
+
+export const SignIn: React.FC<SignInProps> = ({ navigation }) => {
+
 import strings from "../util/Strings";
 import images from "../util/Images";
 
-export const SignIn: React.FC = ({ navigation }: any) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [isPressed, setIsPressed] = useState(false);
 
   const handleLogin = async () => {
     if (!email) {
@@ -28,13 +33,24 @@ export const SignIn: React.FC = ({ navigation }: any) => {
       try {
       await signInWithEmailAndPassword(auth, email, password);
       setError("");
-      } catch {
+
+      navigation.navigate("Formulaire"); // Navigate to Formulaire after successful login
+    }catch {
         setError(strings.auth.invalidEmailOrPassword);
       }
     }
   };
   return (
     <View style={styles.container}>
+          <TouchableOpacity onPress={handleLogin} style={styles.button}>
+            <Text style={styles.buttonText}>Sign In</Text>
+          </TouchableOpacity>
+
+          {/* Redirect to SignUp */}
+          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+            <Text style={styles.linkText}>Don't have an account? Sign up</Text>
+          </TouchableOpacity>
+        </View>
       <ImageBackground 
         source={images.ImageBackground} 
         style={styles.background}
@@ -78,4 +94,3 @@ export const SignIn: React.FC = ({ navigation }: any) => {
     </View>
   );
 };
-

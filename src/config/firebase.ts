@@ -1,19 +1,13 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth'; 
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAQoMS9eP3qSbIa8m7WEdGSR5y0mSlyJzo",
-  authDomain: "authmindcare.firebaseapp.com",
-  projectId: "authmindcare",
-  storageBucket: "authmindcare.firebasestorage.app",
-  messagingSenderId: "872014973085",
-  appId: "1:872014973085:web:e8ca0c24be7aee16082c74",
-  measurementId: "G-L1Q6K4D25K"
-};
-
+import { initializeApp } from "firebase/app";
+import { getAuth, initializeAuth } from "firebase/auth";
+import firebaseConfig from "./firebaseconfig";
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize and export auth
-export const auth = getAuth(app); 
+// Initialize Auth (without persistence, works for Firebase 11.x)
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+export { db, addDoc, collection };
+export { auth };

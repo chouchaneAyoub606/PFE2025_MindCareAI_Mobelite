@@ -1,29 +1,32 @@
 {
   "expo": {
+    "entryPoint": "./App.tsx", 
     "name": "MindCareAI",
     "slug": "MindCareAI",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
 
     "splash": {
-      "image": "./assets/finalSplashScreen.png",
-      "resizeMode": "cover"
-    },
+  "image": "./assets/splash.png",
+  "resizeMode": "contain",
+  "backgroundColor": "#ffffff",
+  "duration": 0
+},
 
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     }
   }
 }

@@ -3,6 +3,12 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-native",
-    "esModuleInterop": true
+    "noImplicitAny": true,      // Enforced explicit typing
+    "esModuleInterop": true,    // Interoperability with CommonJS
+    "resolveJsonModule": true,  // Allows JSON imports
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true, // Skip default library checks for performance
+    "strictFunctionTypes": true, // Strict function type checking
+    "types": ["react", "react-native"]
   }
 }

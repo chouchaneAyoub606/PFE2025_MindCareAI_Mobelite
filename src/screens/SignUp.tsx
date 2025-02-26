@@ -5,19 +5,16 @@ import { auth } from "../config/firebase";
 import styles from "../util/styles";
 import strings from "../util/Strings";
 import images from "../util/Images";
-
 export const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [isPressed, setIsPressed] = useState(false);
-
   const handleSignUp = async () => {
     if (!email) {
       setError(strings.auth.errorRequiredEmail);
       return;
     }
-
     else if (!password) {
       setError(strings.auth.errorRequiredPassword);
       return;
@@ -66,7 +63,6 @@ export const SignUp: React.FC = () => {
           onPressIn={() => setIsPressed(true)}
           onPressOut={() => setIsPressed(false)}
           style={[styles.button, isPressed && styles.buttonPressed, isPressed && { transform: [{ scale: 0.98 }] } ]}>
-          
           <Text style={styles.buttonText}>{strings.auth.signUpTitle}</Text>
         </TouchableOpacity>  
       </View> 

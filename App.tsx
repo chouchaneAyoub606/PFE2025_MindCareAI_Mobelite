@@ -1,18 +1,23 @@
-import React from "react";
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect, useState } from "react"; 
+import { NavigationContainer } from "@react-navigation/native";
 import Navigation from "./src/screens/navigation";
-import { SafeAreaView } from "react-native";
-
-
+import { checkUserLogin } from "./src/screens/CheckUserLogin";
+import Formulaire from "./src/screens/formulaire"; // Import Formulaire
 
 export default function App() {
-  return (
-    
-      <NavigationContainer>
-        <SafeAreaView style={{ flex: 1 }}>
-          <Navigation />
-        </SafeAreaView>
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
-      </NavigationContainer>
+  useEffect(() => {
+    const unsubscribe = checkUserLogin(setIsLoggedIn);
+    return () => unsubscribe();
+  }, []);
+
+  if (isLoggedIn === null) return null; // Avoid flickering on initial load
+
+  return (
+
+    <NavigationContainer>
+      {isLoggedIn ? <Formulaire /> : <Navigation />}
+    </NavigationContainer>
   );
 }

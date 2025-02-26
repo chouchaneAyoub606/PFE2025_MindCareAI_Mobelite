@@ -8,10 +8,20 @@ const styles = StyleSheet.create({
     alignItems: "center", 
     backgroundColor: colors.background, 
   },
-
   background: {
     flex: 1,
     width: "100%",  
+    height: "100%",
+    justifyContent: "center", 
+    alignItems: "center", 
+  },
+  image: {
+    width: "100%", 
+    height: "100%", 
+  },
+  gradient: {
+    position: "absolute",
+    width: "100%",
     height: "100%",
     justifyContent: "center", 
     alignItems: "center", 
