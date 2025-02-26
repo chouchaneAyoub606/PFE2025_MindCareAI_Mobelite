@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import colors from "./Colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
     justifyContent: "center", 
     alignItems: "center", 
-    backgroundColor: "#F5F7FF", 
+    backgroundColor: colors.background, 
   },
   background: {
     flex: 1,
@@ -22,15 +23,22 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: "100%",
+    justifyContent: "center", 
+    alignItems: "center", 
+  },
+  
+  image: {
+    width: "100%", 
+    height: "100%", 
   },
 
   card: {
-    backgroundColor: "white",
+    backgroundColor: colors.white,
     padding: 25,
     borderRadius: 20,
     width: "90%",
     alignItems: "center",
-    shadowColor: "#6C63FF", // Ombre bleutée pour cohérence
+    shadowColor: colors.primary,
     shadowOpacity: 0.3,
     shadowRadius: 20,
     elevation: 8,
@@ -39,7 +47,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    color: "#6C63FF",
+    color: colors.primary,
     marginBottom: 15,
     textAlign: "center",
   },
@@ -47,54 +55,54 @@ const styles = StyleSheet.create({
   input: {
     width: "100%",
     height: 50,
-    backgroundColor: "rgba(230, 232, 255, 0.6)", 
+    backgroundColor: colors.inputBackground, 
     borderRadius: 12,
     paddingHorizontal: 15,
     marginBottom: 15,
-    color: "#4B5563",
+    color: colors.textPrimary,
     fontSize: 16,
   },
 
   button: {
-    backgroundColor: "#6C63FF",
+    backgroundColor: colors.primary,
     paddingVertical: 14,
     width: "100%",
     borderRadius: 12,
     alignItems: "center",
     marginTop: 15,
-    shadowColor: "#6C63FF",
+    shadowColor: colors.primary,
     shadowOpacity: 0.4,
     shadowRadius: 8,
     elevation: 3,
   },
 
   buttonPressed: {
-    backgroundColor: "#4A47D2",
+    backgroundColor: colors.primaryDark,
   },
 
   buttonText: {
-    color: "#FFFFFF",
+    color: colors.white,
     fontWeight: "bold",
     fontSize: 18,
     textTransform: "uppercase",
   },
 
   error: {
-    color: "red",
+    color: colors.error,
     fontSize: 14,
     marginBottom: 10,
   },
 
   forgotPassword: {
     marginTop: 10,
-    color: "#7D89E6",
+    color: colors.secondary,
     fontSize: 14,
     textDecorationLine: "underline",
   },
 
   linkText: {
     marginTop: 20,
-    color: "#7D89E6",
+    color: colors.secondary,
     fontSize: 16,
     fontWeight: "500",
     textDecorationLine: "underline",

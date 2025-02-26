@@ -5,6 +5,8 @@ import { SignIn } from "./SignIn";
 import HomeScreen from "./HomeScreen";
 import formulaire from "./formulaire";
 import SplashScreenComponent from "./SplashScreen";
+import ForgotPassword from "./forgotPassword"
+import strings from "../util/Strings";
 
 export type RootStackParamList = {
   SignUp: undefined;
@@ -23,9 +25,8 @@ export default function Navigation() {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Formulaire" component={formulaire} />
+      <Stack.Screen name={strings.navigation.forgotPassword} component={ForgotPassword} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-
-
     </Stack.Navigator>
   );
 }

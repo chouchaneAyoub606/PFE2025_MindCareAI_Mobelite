@@ -6,14 +6,11 @@ import styles from "../util/styles";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "./navigation";
 import { useNavigation } from "@react-navigation/native";
-
+import images from "../util/Images";
 // Prevent the splash screen from hiding automatically
 SplashScreen.preventAutoHideAsync();
-
 export default function SplashScreenComponent() {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, "SignUp">>(); 
-  const scale = useSharedValue(1); // Shared value for animation
-
   useEffect(() => {
     const startAnimation = () => {
       // Start animation for 1.5 seconds
@@ -31,7 +28,6 @@ export default function SplashScreenComponent() {
     // Cleanup timeout when the component unmounts
     return () => clearTimeout(hideSplash);
   }, []);
-
   // Animated styles using Reanimated
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
@@ -40,7 +36,7 @@ export default function SplashScreenComponent() {
   return (
     <View style={styles.container}>
       <Animated.Image
-        source={require("../assets/finalSplashScreen.png")}
+        source={images.splashScreen}
         style={[styles.image, animatedStyle]}
         resizeMode="cover"
       />

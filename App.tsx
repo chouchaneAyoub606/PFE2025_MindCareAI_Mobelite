@@ -15,6 +15,7 @@ export default function App() {
   if (isLoggedIn === null) return null; // Avoid flickering on initial load
 
   return (
+
     <NavigationContainer>
       {isLoggedIn ? <Formulaire /> : <Navigation />}
     </NavigationContainer>
