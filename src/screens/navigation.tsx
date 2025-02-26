@@ -14,6 +14,7 @@ export type RootStackParamList = {
   HomeScreen: undefined;
   Formulaire: undefined;
   splashScreen : undefined;
+  ForgotPassword: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -25,7 +26,7 @@ export default function Navigation() {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Formulaire" component={formulaire} />
-      <Stack.Screen name={strings.navigation.forgotPassword} component={ForgotPassword} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
     </Stack.Navigator>
   );

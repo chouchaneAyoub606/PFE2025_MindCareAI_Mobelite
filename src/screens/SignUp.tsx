@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import {View, TextInput, Text, TouchableOpacity, ImageBackground} from "react-native";
-import {createUserWithEmailAndPassword} from "firebase/auth";
-import { auth } from "../config/firebase";
-import styles from "../util/styles";
 import strings from "../util/Strings";
 import images from "../util/Images";
-export const SignUp: React.FC = () => {
+import React, { useState } from "react";
+import { View, TextInput, Text, TouchableOpacity, ImageBackground } from "react-native";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
+import styles from "../util/styles";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "./navigation";
+type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">;
+
+export const SignUp: React.FC<SignUpProps> = ({ navigation }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -65,6 +69,10 @@ export const SignUp: React.FC = () => {
           style={[styles.button, isPressed && styles.buttonPressed, isPressed && { transform: [{ scale: 0.98 }] } ]}>
           <Text style={styles.buttonText}>{strings.auth.signUpTitle}</Text>
         </TouchableOpacity>  
+         {/* Redirect to SignIn */}
+         <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+            <Text style={styles.linkText}>Already have an account? Sign in</Text>
+          </TouchableOpacity>
       </View> 
       </ImageBackground>
     </View>

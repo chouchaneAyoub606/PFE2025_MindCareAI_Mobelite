@@ -11,6 +11,7 @@ import images from "../util/Images";
 SplashScreen.preventAutoHideAsync();
 export default function SplashScreenComponent() {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, "SignUp">>(); 
+  const scale = useSharedValue(1); // Shared value for animation
   useEffect(() => {
     const startAnimation = () => {
       // Start animation for 1.5 seconds

@@ -17,9 +17,8 @@ const ForgotPassword: React.FC = ({ navigation }: any) => {
 
     try {
       await sendPasswordResetEmail(auth, email);
-      Alert.alert(strings.auth.success, strings.auth.successReset);
+      alert(strings.auth.successReset);
       setError("");
-      navigation.goBack();
     } catch (error: any) {
       setError(strings.auth.invalidEmail);
     }
