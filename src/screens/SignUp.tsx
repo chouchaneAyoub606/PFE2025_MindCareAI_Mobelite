@@ -71,7 +71,7 @@ export const SignUp: React.FC<SignUpProps> = ({ navigation }) => {
         </TouchableOpacity>  
          {/* Redirect to SignIn */}
          <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
-            <Text style={styles.linkText}>Already have an account? Sign in</Text>
+            <Text style={styles.linkText}>{strings.auth.linkToSignIn}</Text>
           </TouchableOpacity>
       </View> 
       </ImageBackground>

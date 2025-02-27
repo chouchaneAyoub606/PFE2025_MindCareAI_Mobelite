@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Alert, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../config/firebase";
 import styles from "../util/styles";
