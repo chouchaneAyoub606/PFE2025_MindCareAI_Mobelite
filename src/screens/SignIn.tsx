@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { View, TextInput, Text, TouchableOpacity, ImageBackground } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
-import ForgotPassword from "./forgotPassword";
-import styles from "../util/styles";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./navigation";
+
+import styles from "../util/styles";
 import strings from "../util/Strings";
 import images from "../util/Images";
+
 type SignInProps = NativeStackScreenProps<RootStackParamList, "SignIn">;
 export const SignIn: React.FC<SignInProps> = ({ navigation }) => {
   const [email, setEmail] = useState<string>("");
@@ -72,7 +73,7 @@ export const SignIn: React.FC<SignInProps> = ({ navigation }) => {
           </TouchableOpacity>  
           {/* Redirect to SignUp */}
           <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-            <Text style={styles.linkText}>Don't have an account? Sign up</Text>
+            <Text style={styles.linkText}>{strings.auth.linkToSignUp}</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>

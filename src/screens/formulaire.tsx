@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import { View, Text, Button, ScrollView, StyleSheet, ImageBackground } from 'react-native';
 import { RadioButton } from 'react-native-paper';
+import strings from "../util/Strings";
+import images from "../util/Images";
+import colors from "../util/Colors";
+
 
 const questions = [
-  { id: 'A1', text: 'How often do you feel restless, on edge, or unable to relax?' },
-  { id: 'A2', text: 'Do you excessively worry about different things, even if they are not serious?' },
-  { id: 'A3', text: 'Do you experience physical symptoms (fast heartbeat, dizziness, shortness of breath) when stressed or anxious?' },
-  { id: 'A4', text: 'Do you feel overwhelmed or unable to control your thoughts when anxious?' },
-  { id: 'A5', text: 'Do you avoid certain places or social situations due to fear or discomfort?' },
-  { id: 'A6', text: 'Do small problems or uncertainties make you extremely nervous or uncomfortable?' },
-  { id: 'D1', text: 'How often do you feel down, hopeless, or uninterested in things you usually enjoy?' },
-  { id: 'D2', text: 'Do you feel constantly tired or lacking energy, even after resting?' },
-  { id: 'D3', text: 'Have you noticed significant changes in your appetite (eating too little or too much)?' },
-  { id: 'D4', text: 'Do you struggle to focus or make decisions, even for simple tasks?' },
-  { id: 'D5', text: 'Do you often feel guilt, low self-worth, or criticize yourself excessively?' },
-  { id: 'D6', text: 'Do you have frequent negative thoughts about the future, feeling things won’t improve?' },
+  { id: strings.form.id1, text: strings.form.q1 },
+  { id: strings.form.id2, text: strings.form.q2 },
+  { id: strings.form.id3, text: strings.form.q3 },
+  { id: strings.form.id4, text: strings.form.q4 },
+  { id: strings.form.id5, text: strings.form.q5 },
+  { id: strings.form.id6, text: strings.form.q6 },
+  { id: strings.form.id7, text: strings.form.q7 },
+  { id: strings.form.id8, text: strings.form.q8 },
+  { id: strings.form.id9, text: strings.form.q9 },
+  { id: strings.form.id10, text: strings.form.q10 },
+  { id: strings.form.id11, text: strings.form.q11 },
+  { id: strings.form.id12, text: strings.form.q12 },
 ];
 
 const options = [
-  { label: 'Rarely', value: '0' },
-  { label: 'Sometimes', value: '1' },
-  { label: 'Often', value: '2' },
-  { label: 'Almost Always', value: '3' },
+  { label: strings.form.lab1, value: strings.form.val1 },
+  { label: strings.form.lab2, value: strings.form.val2 },
+  { label: strings.form.lab3, value: strings.form.val3 },
+  { label: strings.form.lab4, value: strings.form.val4 },
 ];
 
 export default function QuestionnaireScreen() {
@@ -42,13 +46,13 @@ export default function QuestionnaireScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-       <ImageBackground source={require('../assets/background.png')} style={{ flex: 1,
+       <ImageBackground source={require(images.ImageBackground)} style={{ flex: 1,
     width: "100%",  
     height: "100%",
     justifyContent: "center", 
     alignItems: "center", }} resizeMode="cover">
       <View style={styles.card}>
-        <Text style={styles.title}> Please complete this survey First 😊 </Text>
+        <Text style={styles.title}>{strings.form.formTitle}</Text>
         
         <View key={questions[page].id} style={styles.questionContainer}>
           <Text style={styles.questionText}>{questions[page].text}</Text>
@@ -60,17 +64,17 @@ export default function QuestionnaireScreen() {
               status={answers[questions[page].id] === option.value ? 'checked' : 'unchecked'}
               onPress={() => handleAnswer(questions[page].id, option.value)}
               labelStyle={styles.radioLabel}
-              color="#6C63FF"
+              color={colors.primary}
             />
           ))}
         </View>
 
         <View style={styles.buttonContainer}>
-          {page > 0 && <Button title="Previous" onPress={prevPage} color="#6C63FF" />}
+          {page > 0 && <Button title="Previous" onPress={prevPage} color={colors.primary} />}
           {page < questions.length - 1 ? (
-            <Button title="Next" onPress={nextPage} color="#6C63FF" />
+            <Button title="Next" onPress={nextPage} color={colors.primary} />
           ) : (
-            <Button title="Finish" onPress={() => alert('Questionnaire completed!')} color="#6C63FF" />
+            <Button title="Finish" onPress={() => alert(strings.form.formCompleted)} color={colors.primary} />
           )}
         </View>
       </View>
@@ -84,16 +88,16 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5F7FF', // Light background color for consistency
+    backgroundColor: colors.background, // Light background color for consistency
     paddingVertical: 30,
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     padding: 25,
     borderRadius: 20,
     width: '90%',
     alignItems: 'center',
-    shadowColor: "#6C63FF",
+    shadowColor: colors.primary,
     shadowOpacity: 0.3,
     shadowRadius: 20,
     elevation: 8,
@@ -101,7 +105,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: "#6C63FF",
+    color: colors.primary,
     marginBottom: 15,
     textAlign: "center",
   },
@@ -112,12 +116,12 @@ const styles = StyleSheet.create({
   questionText: {
     fontSize: 18,
     marginBottom: 10,
-    color: '#4B5563',
+    color: colors.textPrimary,
     textAlign: 'center',
   },
   radioLabel: {
     fontSize: 16,
-    color: '#4B5563',
+    color: colors.textPrimary,
   },
   buttonContainer: {
     flexDirection: 'row',
