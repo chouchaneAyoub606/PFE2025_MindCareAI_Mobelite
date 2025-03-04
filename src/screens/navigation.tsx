@@ -6,7 +6,7 @@ import HomeScreen from "./HomeScreen";
 import formulaire from "./formulaire";
 import SplashScreenComponent from "./SplashScreen";
 import ForgotPassword from "./forgotPassword"
-import strings from "../util/Strings";
+import MoodTracker from "./moodTracker"
 
 export type RootStackParamList = {
   SignUp: undefined;
@@ -15,6 +15,7 @@ export type RootStackParamList = {
   Formulaire: undefined;
   splashScreen : undefined;
   ForgotPassword: undefined;
+  MoodTracker: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -26,8 +27,9 @@ export default function Navigation() {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Formulaire" component={formulaire} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="MoodTracker" component={MoodTracker} />
     </Stack.Navigator>
   );
 }

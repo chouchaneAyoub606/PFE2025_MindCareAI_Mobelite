@@ -5,7 +5,6 @@ import strings from "../util/Strings";
 import images from "../util/Images";
 import colors from "../util/Colors";
 
-
 const questions = [
   { id: strings.form.id1, text: strings.form.q1 },
   { id: strings.form.id2, text: strings.form.q2 },
@@ -46,11 +45,10 @@ export default function QuestionnaireScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-       <ImageBackground source={require(images.ImageBackground)} style={{ flex: 1,
-    width: "100%",  
-    height: "100%",
-    justifyContent: "center", 
-    alignItems: "center", }} resizeMode="cover">
+       <ImageBackground 
+       source={images.ImageBackground} 
+       style={styles.background} 
+       resizeMode="cover">
       <View style={styles.card}>
         <Text style={styles.title}>{strings.form.formTitle}</Text>
         
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background, // Light background color for consistency
+    backgroundColor: colors.background, 
     paddingVertical: 30,
   },
   card: {
@@ -101,6 +99,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 20,
     elevation: 8,
+  },
+  background: {
+    flex: 1,
+    width: "100%",  
+    height: "100%",
+    justifyContent: "center", 
+    alignItems: "center", 
   },
   title: {
     fontSize: 22,

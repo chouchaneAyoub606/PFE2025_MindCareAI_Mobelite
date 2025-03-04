@@ -19,19 +19,6 @@ const styles = StyleSheet.create({
     width: "100%", 
     height: "100%", 
   },
-  gradient: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    justifyContent: "center", 
-    alignItems: "center", 
-  },
-  
-  image: {
-    width: "100%", 
-    height: "100%", 
-  },
-
   card: {
     backgroundColor: colors.white,
     padding: 25,
@@ -48,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "bold",
     color: colors.primary,
-    marginBottom: 15,
+    marginBottom: 20,
     textAlign: "center",
   },
 
@@ -107,6 +94,22 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     textDecorationLine: "underline",
     textAlign: "center",
+  },
+  slider: {
+    width: "100%",
+    height: 80,
+  },
+  sliderContainer: {
+    width: "100%",
+    position: "relative",
+    justifyContent: "center",
+  },
+  track: {
+    height: 300,
+    backgroundColor: colors.TrackColor,
+    left: 0,
+    top: "50%",
+    borderRadius: 3,
   },
 });
 

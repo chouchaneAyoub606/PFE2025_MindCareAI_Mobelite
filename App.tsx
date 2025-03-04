@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import Navigation from "./src/screens/navigation";
 import { checkUserLogin } from "./src/screens/CheckUserLogin";
-import Formulaire from "./src/screens/formulaire"; // Import Formulaire
+import MoodTracker from "./src/screens/moodTracker";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
@@ -17,7 +17,7 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Navigation />
+      <MoodTracker />
     </NavigationContainer>
   );
 }

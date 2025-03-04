@@ -67,6 +67,8 @@ const strings = {
     },
     general: {
       error: "An error occurred. Please try again.",
+      askMood: "How are you feeling today? 🌟",
+      checkMark: "✔︎",
     },
   };
   
