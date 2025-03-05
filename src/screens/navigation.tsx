@@ -24,8 +24,6 @@ export default function Navigation() {
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Formulaire" component={formulaire} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-
-
     </Stack.Navigator>
   );
 }
